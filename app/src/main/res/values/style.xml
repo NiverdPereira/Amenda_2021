@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="ImageView" parent="">
+        <item name="android:scaleType">centerCrop</item>
+        <item name="android:layout_height">140dp</item>
+        <item name="android:layout_width">140dp</item>
+    </style>
+
+    <style name="ImageView_left" parent="ImageView">
+        <item name="android:layout_marginStart">20dp</item>
+        <item name="android:layout_marginTop">20dp</item>
+    </style>
+
+    <style name="ImageView_right" parent="ImageView">
+        <item name="android:layout_marginEnd">20dp</item>
+        <item name="android:layout_marginTop">20dp</item>
+    </style>
+</resources>

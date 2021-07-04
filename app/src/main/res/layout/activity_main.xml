@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <androidx.appcompat.widget.Toolbar
+    <Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -18,23 +18,20 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/image1"
-        android:layout_width="140dp"
-        android:layout_height="140dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintEnd_toStartOf="@id/image2"
+        android:id="@+id/Jan8_2020"
+        style="@style/ImageView_left"
+        android:src="@drawable/jan8_2020"
+        app:layout_constraintEnd_toStartOf="@id/feb14_2020"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
+
     <ImageView
-        android:id="@+id/image2"
-        android:layout_width="140dp"
-        android:layout_height="140dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
+        android:id="@+id/feb14_2020"
+        style="@style/ImageView_right"
+        android:src="@drawable/feb14_2020"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/image1"
+        app:layout_constraintStart_toEndOf="@id/Jan8_2020"
         app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
