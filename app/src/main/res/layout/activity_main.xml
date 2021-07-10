@@ -21,7 +21,6 @@
         android:id="@+id/Jan8_2020"
         style="@style/ImageView_left"
         android:src="@drawable/jan8_2020"
-        app:layout_constraintEnd_toStartOf="@id/feb14_2020"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
@@ -31,7 +30,37 @@
         style="@style/ImageView_right"
         android:src="@drawable/feb14_2020"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/Jan8_2020"
         app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+    <ImageView
+        android:id="@+id/sep6_2020"
+        style="@style/ImageView_left"
+        android:src="@drawable/sep6_2020"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/Jan8_2020" />
+
+    <ImageView
+        android:id="@+id/oct11_2020"
+        style="@style/ImageView_right"
+        android:src="@drawable/oct11_2020"
+        android:rotation="90"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/feb14_2020" />
+
+    <ImageView
+        android:id="@+id/nov29_2020"
+        style="@style/ImageView_left"
+        android:src="@drawable/nov29_2020"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/oct11_2020"/>
+
+    <ImageView
+        android:id="@+id/dec5_2020"
+        style="@style/ImageView_right"
+        android:src="@drawable/dec5_2020"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/oct11_2020"/>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
