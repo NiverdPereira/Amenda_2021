@@ -17,17 +17,46 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageView
+        android:id="@+id/one"
+        android:layout_width="0dp"
+        android:layout_height="140dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/the_one"
+        android:scaleType="fitCenter"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintBottom_toTopOf="@id/images"/>
+
+    <TextView
+        android:id="@+id/click"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:text="@string/click_the_photo"
+        android:gravity="center"
+        android:textSize="40dp"
+        android:textAllCaps="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/one"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
     <ScrollView
+        android:id="@+id/images"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:overScrollMode="always"
+        android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar">
+        app:layout_constraintTop_toBottomOf="@id/one">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/Jan8_2020"
@@ -54,6 +83,7 @@
             <ImageView
                 android:id="@+id/oct11_2020"
                 style="@style/ImageView_right"
+                android:rotation="-90"
                 android:src="@drawable/oct11_2020"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/feb14_2020" />
@@ -105,6 +135,13 @@
                 style="@style/ImageView_left"
                 android:src="@drawable/feb21_2021"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/feb14_2021"/>
+
+            <ImageView
+                android:id="@+id/feb27_2021"
+                style="@style/ImageView_right"
+                android:src="@drawable/feb27_2021"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/feb14_2021"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
