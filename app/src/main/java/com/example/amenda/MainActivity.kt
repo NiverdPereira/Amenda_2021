@@ -1,6 +1,7 @@
 package com.example.amenda
 
 import android.annotation.SuppressLint
+import android.media.MediaPlayer
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -16,7 +17,13 @@ import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
+    private val heyPudding = "HEY PUDDING"
+    private val hBD = "HAPPY BIRTHDAY AND....."
+    private val youKnow = "YOU KNOW..."
+    private val iLY = "I LOVE YOU"
+
     var binding: ActivityMainBinding? = null
+    private var media: MediaPlayer? = null
 
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,13 +32,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding?.root)
         setActionBar()
         setImageListener()
+        media = MediaPlayer.create(this, R.raw.music)
     }
 
     @RequiresApi(Build.VERSION_CODES.N)
     private fun setActionBar() {
         val toolBar: Toolbar = findViewById(R.id.toolbar)
         toolBar.apply {
-            title = "Pudding Who?"
+            title = heyPudding
             titleMarginStart = 20
             subtitle = "Click me"
             setSubtitleTextColor(getColor(R.color.white))
@@ -46,21 +54,29 @@ class MainActivity : AppCompatActivity() {
             setHomeAsUpIndicator(R.drawable.feb21_2021)
         }
         toolBar.setOnClickListener {
-            when (toolBar.title) {
-                "Pudding Who?" -> toolBar.title = "Amenda"
-                "Amenda" -> toolBar.title = "What else?"
-                "What else?" -> toolBar.title = "Birthday girl"
-                else -> toolBar.title = "Pudding Who?"
+            if (isBirthday()) {
+                when (toolBar.title) {
+                    heyPudding -> toolBar.title = hBD
+                    hBD -> toolBar.title = youKnow
+                    youKnow -> toolBar.title = iLY
+                    else -> toolBar.title = heyPudding
+                }
+            } else {
+                toolBar.title = "Come back when it is your birthday pudding"
             }
         }
     }
     @RequiresApi(Build.VERSION_CODES.N)
     @SuppressLint("SetTextI18n")
     private fun setImageListener() {
-        val sdf = SimpleDateFormat("dd/MM/yyyy", Locale.US)
-        val date = sdf.parse("19/07/2021")
         binding?.one?.setOnClickListener {
-            if (Date().after(date)) {
+            if (isBirthday()) {
+                if (media?.isPlaying == true) {
+                    media?.stop()
+                }
+                else if (media?.isPlaying == false) {
+                    media?.start()
+                }
                 binding?.images?.visibility = View.VISIBLE
                 binding?.click?.visibility = View.GONE
             } else {
@@ -70,5 +86,11 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    private fun isBirthday(): Boolean {
+        val sdf = SimpleDateFormat("dd/MM/yyyy", Locale.US)
+        val date = sdf.parse("19/07/2021")
+        return Date().after(date)
     }
 }
