@@ -5,13 +5,22 @@ import android.media.MediaPlayer
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.SystemClock
 import android.view.View
 import android.widget.Toolbar
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.ActionBar
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.example.amenda.databinding.ActivityMainBinding
-import java.sql.Date
+import com.google.accompanist.appcompattheme.AppCompatTheme
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -22,17 +31,24 @@ class MainActivity : AppCompatActivity() {
     private val youKnow = "YOU KNOW..."
     private val iLY = "I LOVE YOU"
 
-    var binding: ActivityMainBinding? = null
+    private var binding: ActivityMainBinding? = null
     private var media: MediaPlayer? = null
 
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding?.root)
         setActionBar()
         setImageListener()
         media = MediaPlayer.create(this, R.raw.music)
+
+        binding?.click?.setContent {
+            AppCompatTheme {
+                Click(colors =  R.color.purple_500)
+            }
+        }
     }
 
     @RequiresApi(Build.VERSION_CODES.N)
@@ -66,6 +82,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
     @RequiresApi(Build.VERSION_CODES.N)
     @SuppressLint("SetTextI18n")
     private fun setImageListener() {
@@ -73,19 +90,31 @@ class MainActivity : AppCompatActivity() {
             if (isBirthday()) {
                 if (media?.isPlaying == true) {
                     media?.stop()
-                }
-                else if (media?.isPlaying == false) {
+                } else if (media?.isPlaying == false) {
                     media?.start()
                 }
                 binding?.images?.visibility = View.VISIBLE
                 binding?.click?.visibility = View.GONE
             } else {
-                binding?.click?.apply {
-                    text = "Hey its not your birthday yet! PATIENCE HONEY"
-                    setTextColor(getColor(android.R.color.holo_red_dark))
+                binding?.click?.setContent {
+                    AppCompatTheme {
+                        Click("Hey its not your birthday yet! PATIENCE HONEY", R.color.purple_500)
+                    }
                 }
             }
         }
+    }
+
+    @Composable
+    private fun Click(text: String = stringResource(id = R.string.click_the_photo).uppercase(), colors: Int) {
+        Text(
+            text = text,
+            modifier = Modifier
+                .wrapContentSize(Alignment.Center)
+                .size(40.dp),
+            color = colorResource(id = colors)
+        )
+
     }
 
     private fun isBirthday(): Boolean {
