@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity() {
 
     @RequiresApi(Build.VERSION_CODES.N)
     private fun setActionBar() {
-        val toolBar: Toolbar = findViewById(R.id.toolbar)
+        val toolBar: androidx.appcompat.widget.Toolbar = findViewById(R.id.toolbar)
         toolBar.apply {
             title = heyPudding
             titleMarginStart = 20
@@ -83,7 +83,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    @RequiresApi(Build.VERSION_CODES.N)
+    //@RequiresApi(Build.VERSION_CODES.N)
     @SuppressLint("SetTextI18n")
     private fun setImageListener() {
         binding?.one?.setOnClickListener {
